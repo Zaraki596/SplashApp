@@ -26,12 +26,11 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = Injector.mainViewModel(this)
         setUpRecylerView()
-        getCollections()
-        observeRespone()
+        observeResponse()
 
     }
 
-    private fun observeRespone() {
+    private fun observeResponse() {
         viewModel.collectionResponse.observe(this) { state ->
             when (state) {
                 is State.Loading -> binding.progressHorizontal.show()
@@ -52,9 +51,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getCollections() {
-        viewModel.getCollection()
-    }
 
     private fun setUpRecylerView() {
         binding.recyclerCollections.adapter = adapter
