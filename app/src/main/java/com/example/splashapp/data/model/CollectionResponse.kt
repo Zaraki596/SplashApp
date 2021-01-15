@@ -12,5 +12,6 @@ data class CollectionResponse(
     val cover_photo: CoverPhoto,
     @Json(name = "description")
     val description: String? = null,
+    val links: Links,
     val total_photos: Int
 ) : Parcelable

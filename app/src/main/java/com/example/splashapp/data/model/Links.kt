@@ -7,9 +7,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Links(
-    val download: String,
+    val download: String? = null,
     @Json(name = "download_location")
-    val downloadLocation: String,
+    val downloadLocation: String? = null,
     val html: String,
     val self: String
 ) : Parcelable
