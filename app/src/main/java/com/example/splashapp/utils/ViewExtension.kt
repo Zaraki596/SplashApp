@@ -1,7 +1,9 @@
 package com.example.splashapp.utils
 
+import android.app.Activity
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.example.splashapp.R
@@ -12,6 +14,10 @@ fun View.show() {
 
 fun View.hide() {
     visibility = View.GONE
+}
+
+fun Activity.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(applicationContext, message, duration).show()
 }
 
 fun ImageView.loadImage(url: String) {

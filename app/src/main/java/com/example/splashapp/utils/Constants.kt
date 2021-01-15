@@ -1,3 +1,8 @@
 package com.example.splashapp.utils
 
-val BASE_URL = "https://api.unsplash.com/"
+class Constants {
+    companion object {
+        val BASE_URL = "https://api.unsplash.com/"
+
+    }
+}
