@@ -4,6 +4,7 @@
     <style name="ItemTitleStyle">
         <item name="android:textSize">14sp</item>
         <item name="android:padding">4dp</item>
+        <item name="android:lines">1</item>
         <item name="android:ellipsize">end</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginStart">8dp</item>
