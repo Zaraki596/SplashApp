@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashApp">
-        <activity android:name=".ui.photos.PhotosActivity"></activity>
+        <activity
+            android:name=".ui.PhotoViewerActivity"
+            android:theme="@style/Theme.SplashApp.NoActionBar" />
+        <activity
+            android:name=".ui.photos.PhotosActivity"
+            android:theme="@style/Theme.SplashApp.NoActionBar" />
         <activity android:name=".ui.collection.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
