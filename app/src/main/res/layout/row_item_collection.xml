@@ -4,7 +4,7 @@
     android:id="@+id/card_row_item"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_thumb_height"
-    android:layout_margin="4dp"
+    android:layout_margin="10dp"
     app:cardCornerRadius="@dimen/dimen_card_radius"
     app:cardElevation="@dimen/dimen_card_elevation">
 
