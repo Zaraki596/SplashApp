@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SplashApp</string>
+    <string name="cover_photo_content_desc">Cover Photo</string>
+    <string name="collections">Collections</string>
 </resources>
