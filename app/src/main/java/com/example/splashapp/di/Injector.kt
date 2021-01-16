@@ -9,6 +9,8 @@ object Injector {
      * Manual Dependency injection to pass the required parameter
      * */
 
+    /*
+    * handle All network related dependencies*/
     private val loggingInterceptor = NetworkResolver.provideLoggingInterceptor()
 
     private val okHttp = NetworkResolver.provideOkhttpClient(loggingInterceptor)
@@ -21,6 +23,8 @@ object Injector {
 
     private val apiManager = NetworkResolver.provideApiManager(retrofit)
 
+    /*
+    * handle All Application related dependencies*/
     private val remoteDataSource by lazy {
         AppResolver.provieRemoteDataSource(apiManager)
     }
@@ -29,6 +33,8 @@ object Injector {
         AppResolver.provideUnsplashRepository(remoteDataSource)
     }
 
+    /*
+    * handle All ViewModel related dependencies*/
     private val mainViewModelFactory by lazy {
         ViewModelResolver.provideMainViewModelFactory(unSplashRepository)
     }

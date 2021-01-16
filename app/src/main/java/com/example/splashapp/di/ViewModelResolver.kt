@@ -14,6 +14,10 @@ object ViewModelResolver {
     ): MainViewModel = ViewModelProvider(activity, factory).get(MainViewModel::class.java)
 
     fun provideMainViewModelFactory(unSplashRepository: UnsplashRepository) =
-        MainViewModelFactory(unSplashRepository)
+        MainViewModelFactory(
+            AppResolver.application,
+            unSplashRepository
+        )
 
 }
+
