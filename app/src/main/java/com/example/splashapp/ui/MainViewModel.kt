@@ -1,17 +1,21 @@
 package com.example.splashapp.ui
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.splashapp.data.model.CollectionResponse
 import com.example.splashapp.data.model.PhotoResponse
 import com.example.splashapp.data.repo.UnsplashRepository
 import com.example.splashapp.utils.State
+import com.example.splashapp.utils.hasInternetConnection
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.io.IOException
 
-class MainViewModel(val unsplashRepository: UnsplashRepository) : ViewModel() {
+class MainViewModel(val app: Application, val unsplashRepository: UnsplashRepository) :
+    AndroidViewModel(app) {
 
 
     private val _collectionResponse = MutableLiveData<State<List<CollectionResponse>>>()
@@ -22,17 +26,12 @@ class MainViewModel(val unsplashRepository: UnsplashRepository) : ViewModel() {
 
     var pageNumber = 1
 
-    init {
-        getCollection()
-    }
+//    init {
+//        getCollection()
+//    }
 
     fun getCollection() = viewModelScope.launch {
-        _collectionResponse.postValue(State.loading())
-
-        val response = unsplashRepository.getCollection(pageNumber)
-        _collectionResponse.postValue(handleCollectionResponse(response))
-
-
+        safeCollections()
     }
 
     private fun handleCollectionResponse(response: Response<List<CollectionResponse>>): State<List<CollectionResponse>> {
@@ -45,10 +44,7 @@ class MainViewModel(val unsplashRepository: UnsplashRepository) : ViewModel() {
     }
 
     fun getPhotos(id: String) = viewModelScope.launch {
-        _photosResponse.postValue(State.loading())
-
-        val response = unsplashRepository.getPhotos(id)
-        _photosResponse.postValue(handlePhotosResponse(response))
+        safePhotos(id)
 
     }
 
@@ -59,5 +55,39 @@ class MainViewModel(val unsplashRepository: UnsplashRepository) : ViewModel() {
             }
         }
         return State.error(response.message())
+    }
+
+    private suspend fun safeCollections() {
+        _collectionResponse.postValue(State.Loading())
+        try {
+            if (hasInternetConnection(app.applicationContext)) {
+                val response = unsplashRepository.getCollection(pageNumber)
+                _collectionResponse.postValue(handleCollectionResponse(response))
+            } else {
+                _collectionResponse.postValue(State.Error("No internet connection"))
+            }
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> _collectionResponse.postValue(State.Error("Network Failure"))
+                else -> _collectionResponse.postValue(State.Error("Conversion Error"))
+            }
+        }
+    }
+
+    private suspend fun safePhotos(id: String) {
+        _photosResponse.postValue(State.Loading())
+        try {
+            if (hasInternetConnection(app.applicationContext)) {
+                val response = unsplashRepository.getPhotos(id)
+                _photosResponse.postValue(handlePhotosResponse(response))
+            } else {
+                _photosResponse.postValue(State.Error("No internet connection"))
+            }
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> _photosResponse.postValue(State.Error("Network Failure"))
+                else -> _photosResponse.postValue(State.Error("Conversion Error"))
+            }
+        }
     }
 }
