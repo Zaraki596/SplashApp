@@ -22,7 +22,6 @@ An SplashApp which showcases the collection of the photos from the [Unsplash Api
   - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
 - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
 - [Glide](https://bumptech.github.io/glide/) - A fast and efficient image loading library for Android focused on smooth scrolling.
-- [Moshi](https://github.com/square/moshi) - A modern JSON library for Kotlin and Java.
 - [Moshi Converter](https://github.com/square/retrofit/tree/master/retrofit-converters/moshi) - A Converter which uses Moshi for serialization to and from JSON.
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android
 
@@ -30,7 +29,6 @@ An SplashApp which showcases the collection of the photos from the [Unsplash Api
 
 
 ##Some edge cases that will come in future
-[]Proper Network handling
 []Pagination
 []Modern UI
 []Unit test/Integrated Testing
