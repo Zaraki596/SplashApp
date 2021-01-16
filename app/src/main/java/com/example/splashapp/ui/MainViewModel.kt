@@ -26,9 +26,9 @@ class MainViewModel(val app: Application, val unsplashRepository: UnsplashReposi
 
     var pageNumber = 1
 
-//    init {
-//        getCollection()
-//    }
+    init {
+        getCollection()
+    }
 
     fun getCollection() = viewModelScope.launch {
         safeCollections()
