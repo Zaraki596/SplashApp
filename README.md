@@ -28,7 +28,8 @@ An SplashApp which showcases the collection of the photos from the [Unsplash Api
 ### Apart from this the whole app is build using custom DI no external libraries are used.
 
 
-##Some edge cases that will come in future
-[]Pagination
-[]Modern UI
-[]Unit test/Integrated Testing
+### Some edge cases that will come in future
+- [x] Handle Network State Changes
+- [ ] Pagination
+- [ ] Modern UI
+- [ ] Unit test/Integrated Testing
