@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
 
-    private val adapter = CollectionListAdapter(this::onItemClicked)
+    private val adapter by lazy { CollectionListAdapter(this::onItemClicked) }
     private var totalPhotosCollection = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {

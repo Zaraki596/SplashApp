@@ -23,7 +23,7 @@ class PhotosActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
 
-    private val adapter = PhotosListAdapter(this::onItemClicked)
+    private val adapter by lazy { PhotosListAdapter(this::onItemClicked) }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
