@@ -67,7 +67,8 @@ class PhotosActivity : AppCompatActivity() {
             when (state) {
                 is State.Loading -> binding.progressHorizontal.show()
                 is State.Success -> {
-                    adapter.submitList(state.data.take(6))
+                    //Only taking n photos at a given time
+                    adapter.submitList(state.data.take(10))
                     binding.progressHorizontal.hide()
                 }
                 is State.Error -> {
@@ -81,6 +82,7 @@ class PhotosActivity : AppCompatActivity() {
 
     private fun setUpRecylerView() {
         binding.recyclerPhotos.adapter = adapter
+        binding.recyclerPhotos.setHasFixedSize(true)
     }
 
     private fun setupToolbar() {
