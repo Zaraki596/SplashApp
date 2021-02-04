@@ -10,7 +10,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object NetworkResolver {
 
-
     fun provideApiManager(retrofit: Retrofit) = ApiManager(retrofit)
 
     fun provideRetrofitClient(baseUrl: String, okHttpClient: OkHttpClient): Retrofit {
@@ -30,5 +29,4 @@ object NetworkResolver {
 
     fun provideLoggingInterceptor() =
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-
 }

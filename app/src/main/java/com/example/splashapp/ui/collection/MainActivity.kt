@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         viewModel = Injector.mainViewModel(this)
         setUpRecylerView()
         observeResponse()
-
     }
 
     private fun observeResponse() {
@@ -47,10 +46,8 @@ class MainActivity : AppCompatActivity() {
                     binding.progressHorizontal.hide()
                 }
             }
-
         }
     }
-
 
     private fun setUpRecylerView() {
         binding.recyclerCollections.adapter = adapter

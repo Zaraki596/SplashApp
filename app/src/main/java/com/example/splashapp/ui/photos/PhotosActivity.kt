@@ -16,7 +16,6 @@ import com.example.splashapp.ui.adapters.PhotosListAdapter
 import com.example.splashapp.ui.collection.MainActivity
 import com.example.splashapp.utils.*
 
-
 class PhotosActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityPhotosBinding::inflate)
@@ -25,18 +24,16 @@ class PhotosActivity : AppCompatActivity() {
 
     private val adapter by lazy { PhotosListAdapter(this::onItemClicked) }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupToolbar()
 
-        //Recieved the value from the previous activity
+        // Recieved the value from the previous activity
         val collectionResponse =
             intent.getParcelableExtra<CollectionResponse>(MainActivity.COLLECTION_KEY)
 
-
-        //Initial setup for this screen using above data
+        // Initial setup for this screen using above data
         binding.textToolbarTitle.text = collectionResponse?.title
         binding.textToolbarCount.text = collectionResponse?.total_photos.toString()
         binding.textCollectionLink.apply {
@@ -56,18 +53,16 @@ class PhotosActivity : AppCompatActivity() {
         observeResponse()
     }
 
-
     private fun getCollectionPhotos(id: String?) {
         viewModel.getPhotos(id!!)
     }
-
 
     private fun observeResponse() {
         viewModel.photosResponse.observe(this) { state ->
             when (state) {
                 is State.Loading -> binding.progressHorizontal.show()
                 is State.Success -> {
-                    //Only taking n photos at a given time
+                    // Only taking n photos at a given time
                     adapter.submitList(state.data.take(10))
                     binding.progressHorizontal.hide()
                 }
@@ -77,7 +72,6 @@ class PhotosActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     private fun setUpRecylerView() {
@@ -106,5 +100,4 @@ class PhotosActivity : AppCompatActivity() {
     companion object {
         const val PHOTO_KEY = "photo_key"
     }
-
 }

@@ -19,7 +19,6 @@ class PhotosListAdapter(private val onItemClicked: (PhotoResponse) -> Unit) :
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) =
         holder.bind(getItem(position), onItemClicked)
 
-
     inner class PhotosViewHolder(
         private val binding: RowItemPhotosBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -31,9 +30,7 @@ class PhotosListAdapter(private val onItemClicked: (PhotoResponse) -> Unit) :
                 onItemClicked(item)
             }
         }
-
     }
-
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<PhotoResponse>() {

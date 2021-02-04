@@ -8,7 +8,6 @@ import com.example.splashapp.ui.photos.PhotosActivity
 import com.example.splashapp.utils.loadImage
 import com.example.splashapp.utils.viewBinding
 
-
 class PhotoViewerActivity : AppCompatActivity() {
     private val binding by viewBinding(ActivityPhotoViewerBinding::inflate)
 

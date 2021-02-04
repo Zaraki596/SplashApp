@@ -17,7 +17,6 @@ import java.io.IOException
 class MainViewModel(val app: Application, val unsplashRepository: UnsplashRepository) :
     AndroidViewModel(app) {
 
-
     private val _collectionResponse = MutableLiveData<State<List<CollectionResponse>>>()
     val collectionResponse: LiveData<State<List<CollectionResponse>>> get() = _collectionResponse
 
@@ -45,7 +44,6 @@ class MainViewModel(val app: Application, val unsplashRepository: UnsplashReposi
 
     fun getPhotos(id: String) = viewModelScope.launch {
         safePhotos(id)
-
     }
 
     private fun handlePhotosResponse(response: Response<List<PhotoResponse>>): State<List<PhotoResponse>> {

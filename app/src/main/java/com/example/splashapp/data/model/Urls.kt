@@ -1,6 +1,5 @@
 package com.example.splashapp.data.model
 
-
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 

@@ -18,6 +18,4 @@ object ViewModelResolver {
             AppResolver.application,
             unSplashRepository
         )
-
 }
-

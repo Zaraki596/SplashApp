@@ -19,7 +19,6 @@ class CollectionListAdapter(private val onItemClicked: (CollectionResponse) -> U
     override fun onBindViewHolder(holder: CollectionViewHolder, position: Int) =
         holder.bind(getItem(position), onItemClicked)
 
-
     inner class CollectionViewHolder(
         private val binding: RowItemCollectionBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -34,9 +33,7 @@ class CollectionListAdapter(private val onItemClicked: (CollectionResponse) -> U
                 onItemClicked(item)
             }
         }
-
     }
-
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CollectionResponse>() {

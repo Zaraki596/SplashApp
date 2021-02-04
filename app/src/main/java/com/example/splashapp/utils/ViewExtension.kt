@@ -23,11 +23,13 @@ fun Activity.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
 fun ImageView.loadImage(url: String) {
     Glide.with(context)
         .load(url)
-        .placeholder(CircularProgressDrawable(this.context).apply {
-            strokeWidth = 10f
-            centerRadius = 50f
-            start()
-        })
+        .placeholder(
+            CircularProgressDrawable(this.context).apply {
+                strokeWidth = 10f
+                centerRadius = 50f
+                start()
+            }
+        )
         .error(R.drawable.ic_error)
         .into(this)
 }

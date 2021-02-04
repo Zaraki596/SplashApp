@@ -18,7 +18,8 @@ object Injector {
     private val baseUrl = NetworkResolver.provideBaseUrl()
 
     private val retrofit = NetworkResolver.provideRetrofitClient(
-        baseUrl, okHttp
+        baseUrl,
+        okHttp
     )
 
     private val apiManager = NetworkResolver.provideApiManager(retrofit)
@@ -42,6 +43,4 @@ object Injector {
     fun mainViewModel(activity: AppCompatActivity): MainViewModel {
         return ViewModelResolver.provideMainViewModel(mainViewModelFactory, activity)
     }
-
-
 }

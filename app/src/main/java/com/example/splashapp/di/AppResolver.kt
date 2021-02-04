@@ -20,6 +20,4 @@ object AppResolver {
     fun initializeApp(application: SplashApplication) {
         _application = application
     }
-
-
 }

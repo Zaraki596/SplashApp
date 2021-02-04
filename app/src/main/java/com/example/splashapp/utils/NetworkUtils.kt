@@ -5,7 +5,6 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 
-
 fun hasInternetConnection(context: Context): Boolean {
     val connectivityManager = context.getSystemService(
         Context.CONNECTIVITY_SERVICE
@@ -31,5 +30,3 @@ fun hasInternetConnection(context: Context): Boolean {
     }
     return false
 }
-
-
